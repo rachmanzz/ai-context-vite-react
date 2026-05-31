@@ -14,7 +14,7 @@ AI **must** ask these questions to deeply understand the project before generati
 - Build tool: Vite
 - Language: TypeScript
 - Styling: Tailwind CSS
-- State management: Zustand, Redux, Context API, or none? (wajib)
+- State management: Zustand, Redux, Context API, or none? (required)
 - PWA support needed?
 
 ### 3. Architecture & Data Flow
@@ -56,7 +56,7 @@ After user answers, AI creates `./.ai/clarification/project-learning.md` with th
 ```markdown
 # Project Learning: [Project Name]
 
-## Prinsip Utama
+## Main Principles
 
 ### 1. ...
 ### 2. ...

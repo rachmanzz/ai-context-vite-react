@@ -86,16 +86,44 @@ Common examples:
 - Confirm `vite.config.ts` exists and is configured
 - Run a dry build or dev server check to ensure no errors
 
-## 9. Check API Documentation
+## 9. Setup AI Roles
+
+Check `.ai/clarification/ai-roles.md`:
+- If it exists with complete role definitions, read and use it
+- For each role listed, ensure the corresponding agent file exists
+
+### If ai-roles.md is missing or incomplete:
+
+Ask the user:
+- "Which AI/tool handles **Code Execution**? (e.g., `opencode` with OpenAI, Claude CLI, etc.)"
+- "Which AI/tool handles **Code Audit**? (e.g., `gemini-cli`, `opencode` with different model, etc.)"
+
+Generate `.ai/clarification/ai-roles.md`:
+
+```markdown
+# AI Roles Clarification
+
+## Code Execution
+- **Tool:** {{code-execution-tool}}
+- **Model/Provider:** {{code-execution-model}}
+
+## Code Audit
+- **Tool:** {{code-audit-tool}}
+- **Model/Provider:** {{code-audit-model}}
+```
+
+**Note:** Agent files (`agents.md`, `gemini.md`, etc.) are NOT generated here. They are generated later when the AI receives its role mandate, following the templates in `.ai/context/roles.md`.
+
+## 10. Check API Documentation
 
 Check `.ai/work/api.docs.md`:
-- If it contains real API documentation (content beyond the placeholder `[ do not delete this line... ]`), proceed to step 10
+- If it contains real API documentation (content beyond the placeholder `[ do not delete this line... ]`), proceed to step 11
 - If it is empty or only has the placeholder line:
   - Ask the user: **"Do you want to add API documentation first? You'll need to manually edit `.ai/work/api.docs.md`."**
-  - **If yes**: Say "I will stop execution. After you fill in the API docs, type `lanjutkan eksekusi` to continue." Then STOP — do not proceed further. Wait for the user to type `lanjutkan eksekusi` before continuing.
-  - **If no**: Proceed to step 10 without API docs. During implementation, create mock data on the frontend side as needed.
+  - **If yes**: Say "I will stop execution. After you fill in the API docs, type `continue execution` to continue." Then STOP — do not proceed further. Wait for the user to type `continue execution` before continuing.
+  - **If no**: Proceed to step 11 without API docs. During implementation, create mock data on the frontend side as needed.
 
-## 10. Create Workflow & Strategy
+## 11. Create Workflow & Strategy
 
 Create or update these files:
 
@@ -107,9 +135,10 @@ Create or update these files:
 - Document the implementation strategy based on facts (not assumptions)
 - Reference `.ai/work/api.docs.md` if it exists with real content
 - If no API docs exist, note that frontend mocking will be used
+- Reference `.ai/clarification/ai-roles.md` to determine which AI handles execution
 - Wait for user validation of the strategy before executing
 
-## 11. Execute Strategy
+## 12. Execute Strategy
 
 - After the user validates the strategy, implement the frontend features
 - If API endpoints are not yet available, create mock data/functions on the frontend side to demonstrate functionality
