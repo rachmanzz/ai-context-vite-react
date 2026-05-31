@@ -10,16 +10,16 @@ Choose your package manager:
 
 ```bash
 # bun (preferred)
-bun create vite [app-name] --template react-ts
+bun create vite ./ --template react-ts
 
 # deno
 deno init --npm vite
 
 # yarn
-yarn create vite [app-name] --template react-ts
+yarn create vite ./ --template react-ts
 
 # npm
-npm create vite@latest [app-name] -- --template react-ts
+npm create vite@latest ./ -- --template react-ts
 ```
 
 ## Install Dependencies
