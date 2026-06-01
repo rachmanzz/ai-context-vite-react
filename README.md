@@ -1,5 +1,13 @@
 # AI Context — How to Run AI Agents
 
+## Cloning
+
+To clone this project template:
+
+```bash
+npx degit rachmanzz/ai-context-vite your-project
+```
+
 This project uses two AI roles: **Code Execution** (build/implement) and **Code Audit** (review/check).
 
 Only **one** initial prompt is needed to set up both roles.
